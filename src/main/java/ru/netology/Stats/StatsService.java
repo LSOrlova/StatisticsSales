@@ -18,46 +18,50 @@ public class StatsService {
         }
         return salesAverage / sales.length;
     }
-        public int maxSales(long[] sales) {
+
+    public int maxSales(long[] sales) {
         int maxMonth = 0;
-        int month = 0; // переменная для индекса рассматриваемого месяца в массиве
+        int month = 0;
         for (long sale : sales) {
-            // sales[maxMonth] - продажи в месяце minMonth
-            // sale - продажи в рассматриваемом месяце
             if (sale >= sales[maxMonth]) {
                 maxMonth = month;
             }
-            month = month + 1; // следующий рассматриваемый месяц имеет номер на 1 больше
+            month = month + 1;
         }
         return maxMonth + 1;
     }
+
     public int minSales(long[] sales) {
         int minMonth = 0;
-        int monthForMin = 0; // переменная для индекса рассматриваемого месяца в массиве
+        int monthForMin = 0;
         for (long sale : sales) {
-            // sales[minMonth] - продажи в месяце minMonth
-            // sale - продажи в рассматриваемом месяце
+
             if (sale <= sales[minMonth]) {
                 minMonth = monthForMin;
             }
-            monthForMin = monthForMin + 1; // следующий рассматриваемый месяц имеет номер на 1 больше
+            monthForMin = monthForMin + 1;
         }
         return minMonth + 1;
     }
 
     public int belowAverage(long[] sales) {
         int monthMinCounter = 0;
-        for (long sale: sales) {
-            if (sale < salesAverage(sales))
+        long salesAverage = salesAverage(sales);
+        for (long sale : sales) {
+            if (sale < salesAverage) {
                 monthMinCounter++;
+            }
         }
         return monthMinCounter;
     }
+
     public int upperAverage(long[] sales) {
         int monthMaxCounter = 0;
-        for (long sale: sales) {
-            if (sale > salesAverage(sales))
+        long salesAverage = salesAverage(sales);
+        for (long sale : sales) {
+            if (sale > salesAverage) {
                 monthMaxCounter++;
+            }
         }
         return monthMaxCounter;
     }
